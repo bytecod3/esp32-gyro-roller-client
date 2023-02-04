@@ -1,3 +1,5 @@
+#ifndef DEFS_H
+#define DEFS_H
 
 #define DEBUG 1
 
@@ -13,4 +15,10 @@
 #define debugf(x, y)
 
 #endif
+
+// pins
+#define SERVO_PIN 25
+
+#endif
+
 
