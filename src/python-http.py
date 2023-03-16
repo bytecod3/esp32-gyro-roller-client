@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 # esp32 glove host and port
-HOST = "192.168.9.36"
+HOST = "192.168.207.36"
 PORT = 80
 
 # create servo object

@@ -4,7 +4,7 @@ from gpiozero import AngularServo
 from time import sleep
 
 # esp32 glove host and port
-HOST = "192.168.9.36"
+HOST = "192.168.207.36"
 PORT = 80
 
 # create servo object
@@ -17,6 +17,7 @@ while True:
 	response = connection.getresponse()
 	
 	roll_angle = int(float(response.read().decode("utf-8")))
+	print(roll_angle)
 		
 	# process this value to get the absolute value
 	servo.angle = roll_angle	

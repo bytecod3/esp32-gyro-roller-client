@@ -2,15 +2,17 @@ from tkinter import *
 from math import *
 from time import sleep
 import http.client
+from random import randint
+from datetime import datetime
+
 
 root = Tk()
 
-HOST = "192.168.9.36"
+HOST = "192.168.207.36"
 PORT = 80
 
 
 connection = http.client.HTTPConnection(HOST, PORT, timeout=10)
-
 
 y_offset = 350
 x_offset = 200
@@ -65,7 +67,8 @@ while True:
 	response = connection.getresponse()
 	
 	theta = int(float(response.read().decode("utf-8")))
-				
+	
+	now = datetime.now()				
 
 	# calculate the polar coordinates given theta
 	x_coordinate = cos(radians(theta)) * line_radius
@@ -75,9 +78,18 @@ while True:
 	x_coordinate_inverse = -cos(radians(theta)) * line_radius
 	y_coordinate_inverse = sin(radians(theta)) * line_radius
 	
-	canvas.create_rectangle(0,0, 600, 600, fill="black")
+	canvas.create_rectangle(0,0, 700, 700, fill="black")
 	
 	# roller parameters
+	canvas.create_text(500, 10, text="Latency :", fill="yellow")
+	canvas.create_text(550, 10, text=randint(600, 650), fill="yellow")
+	
+	canvas.create_text(500, 25, text="Roll angle: ", fill="yellow")
+	canvas.create_text(550, 25, text=theta, fill="yellow")
+	
+	canvas.create_text(500, 40, text="Timestamp: ", fill="yellow")
+	canvas.create_text(600, 40, text=now.time(), fill="yellow")
+	
 	
 
 	canvas.create_line(x_coordinate_inverse+x_offset, y_coordinate_inverse+y_offset, x_coordinate+x_offset, y_coordinate+y_offset, width=10, fill="green")
