@@ -5,7 +5,6 @@
 #include "defs.h"
 #include <esp_wifi.h>
 #include <HTTPClient.h>
-#include <Servo.h>
 
 void create_wifi_hotspot(){
   
@@ -18,7 +17,7 @@ void create_wifi_hotspot(){
 }
 
 void display_connected_devices(){
-  /*
+  /*t
     This function lists all devices connected to this ESP access point
   */
   wifi_sta_list_t wifi_sta_list;
@@ -68,7 +67,7 @@ void loop() {
     // use it to write angles to the servo motor
     roll_angle = (int) payload;
 
-    servo.write(roll_angle);
+    servo.write(roll_angle);p
     
   } else{
     debugln("[-] Error response code");
